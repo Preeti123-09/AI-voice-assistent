@@ -1,0 +1,23 @@
+ai-voice-assistant/
+│
+├── 📂 streamlit_gui/
+│   ├── ai_voice_assistant.py
+│   ├── requirements.txt
+│   └── README.md
+│
+├── 📂 tkinter_gui/
+│   ├── ai_voice_assistant_tkinter.py
+│   ├── requirements.txt
+│   └── README.md
+│
+├── 📂 local_tts_version/
+│   ├── ai_assistant_local_tts.py
+│   ├── requirements.txt
+│   └── README.md
+│
+├── 📂 elevenlabs_version/
+│   ├── ai_assistant_elevenlabs.py
+│   ├── requirements.txt
+│   └── README.md
+│
+└── LICENSE

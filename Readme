@@ -1,0 +1,17 @@
+# 🧠 AI Voice Assistant (Python + Streamlit)
+
+A real-time AI voice assistant that listens, understands, and responds using OpenAI and ElevenLabs.
+
+## 🔧 Features
+- 🎧 Voice input using `SpeechRecognition`
+- 🧠 Smart responses via GPT (OpenAI or DeepSeek)
+- 🗣️ Text-to-speech with ElevenLabs or pyttsx3
+- 🎨 Streamlit GUI for easy interaction
+
+---
+
+## 🚀 Getting Started
+
+### ✅ Install Requirements
+```bash
+pip install openai streamlit requests SpeechRecognition pyttsx3

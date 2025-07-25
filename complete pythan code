@@ -1,0 +1,70 @@
+# ai_voice_assistant.py
+import speech_recognition as sr
+import streamlit as st
+import openai
+import requests
+import pyttsx3
+import time
+import threading
+
+# Set your API keys
+openai.api_key = "YOUR_OPENAI_API_KEY"
+ELEVENLABS_API_KEY = "YOUR_ELEVENLABS_API_KEY"
+
+# TTS using ElevenLabs API
+def speak(text):
+    headers = {
+        "xi-api-key": ELEVENLABS_API_KEY,
+        "Content-Type": "application/json"
+    }
+    data = {
+        "text": text,
+        "voice_settings": {"stability": 0.75, "similarity_boost": 0.75}
+    }
+    response = requests.post(
+        "https://api.elevenlabs.io/v1/text-to-speech/EXAVITQu4vr4xnSDxMaL", json=data, headers=headers
+    )
+    if response.ok:
+        with open("output.mp3", "wb") as f:
+            f.write(response.content)
+        st.audio("output.mp3", format="audio/mp3", autoplay=True)
+    else:
+        st.error("Failed to fetch TTS audio.")
+
+# Alternative local TTS
+def speak_local(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+
+# Get response from OpenAI
+def get_response(prompt):
+    try:
+        completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # or gpt-4
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.7,
+        )
+        return completion.choices[0].message.content.strip()
+    except Exception as e:
+        return f"Error: {e}"
+
+# Streamlit UI
+st.title("🎙️ AI Voice Assistant")
+st.info("Click below and start speaking. Your assistant will listen and reply!")
+
+if st.button("🎤 Start Listening"):
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        st.write("Listening...")
+        audio = recognizer.listen(source)
+        try:
+            query = recognizer.recognize_google(audio)
+            st.success(f"You said: {query}")
+            response = get_response(query)
+            st.markdown(f"**AI Response:** {response}")
+            speak(response)
+        except sr.UnknownValueError:
+            st.error("Sorry, I could not understand your speech.")
+        except sr.RequestError:
+            st.error("Speech Recognition API error.")

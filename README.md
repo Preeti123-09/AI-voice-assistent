@@ -1,32 +1,42 @@
 # AI-voice-assistent
-🎯 Fake Review Detector — ML Web App with Flask
-A simple web application that detects fake product reviews using a trained machine learning model (Naive Bayes). Built with Python, Flask, HTML, CSS, and scikit-learn.
-Users can input a product review and instantly get a prediction: Genuine or Fake.
+🗣️ AI Voice Assistant — Python-based Smart LLM Bot
+A powerful AI Voice Assistant built using Python that listens to your voice, understands your intent using a Large Language Model (LLM), and speaks back the response using TTS (Text-to-Speech).
+Supports real-time interruption, streaming responses, and integrates with APIs like OpenAI, DeepSeek, ElevenLabs, or pyttsx3.
 
-🔍 Features
-🔎 Detects fake reviews using NLP + ML
+Features
+🎙️ Real-time Speech Recognition (speech_recognition)
 
-🌐 Web-based UI (Flask + HTML/CSS)
+🧠 Natural Language Understanding using LLM (OpenAI or DeepSeek)
 
-🧠 Simple Naive Bayes classifier with CountVectorizer
+🗣️ Voice Output with ElevenLabs or pyttsx3
 
-📦 Ready to deploy on Replit, Render, or localhost
+🔁 Continuous conversation loop
 
-🚀 How to Run
+⏱️ Interruptible input (auto-detects when user starts talking again)
+Tech Stack
+Python (Flask/CLI)
+
+OpenAI or DeepSeek LLM
+
+ElevenLabs or pyttsx3 (TTS)
+
+speech_recognition for voice input
+
+Optional: GUI with Tkinter or Streamlit
+
+How to Run
 bash
 Copy
 Edit
 pip install -r requirements.txt
-python app.py
-Let me know if you also want:
+python assistant.py
 
-A LICENSE file
-
-GitHub tags like #machine-learning #flask #nlp #fake-review
-
-A banner image for the repo
-
-Would you like a README.md version with markdown formatting and badges?
+Environment Setup (example)
+env
+Copy
+Edit
+OPENAI_API_KEY=your-key
+ELEVENLABS_API_KEY=your-key
 
 
 
